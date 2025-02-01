@@ -10,7 +10,6 @@ int main() {
 
   cin >> s >> n;
 
-  l.push_back(0);
   for (int i = 0; i < s.length(); i++)
     l.push_back(s.at(i));
 
@@ -25,8 +24,8 @@ int main() {
     } else if (cmd == 'D') {
       if (x != l.end()) x++;
     } else if (cmd == 'B') {
-      if (x != l.begin())
-        x = l.erase(--x);
+      x = l.erase(x);
+      if (x != l.begin()) x--;
     } else if (cmd == 'P') {
       char c;
       cin >> c;
@@ -34,9 +33,7 @@ int main() {
       x = l.insert(x, c);
     }
   }
-
-  for (list<char>::iterator i = l.begin(); i != l.end(); i++)
-    cout << *i;
+  
 
   return 0;
 }
